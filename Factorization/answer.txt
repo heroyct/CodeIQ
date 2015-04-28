@@ -1,24 +1,373 @@
-
-
 コード：
+githubにも公開されています。
+https://github.com/heroyct/CodeIQ/tree/master/Factorization
+https://github.com/heroyct/CodeIQ/tree/master/FactorizationTest
 
+実行コード：
+using System;
 
+namespace Factorization
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            if (args.Length != 3)
+            {
+                Console.WriteLine("please inter the correct parameter number");
+                return;
+            }
+            if (IsInt(args[0]) == false || IsInt(args[1]) == false || IsInt(args[2]) == false)
+            {
+                Console.WriteLine("please inter a integer number");
+                return;
+            }
+            var result = Factorisation.Calc(int.Parse(args[0]), int.Parse(args[1]), int.Parse(args[2]));
+            if (result.Count == 0)
+            {
+                Console.WriteLine("因数分解できません");
+                return;
+            }
+            Console.WriteLine("以下は結果です");
+            foreach (var res in result)
+            {
+                Console.WriteLine(res);
+            }
+        }
 
-コードが完全な形（そのままコンパイル・実行）できるものでない場合は程度に応じて減点の対象となります。
+        private static bool IsInt(string number)
+        {
+            int it = -1;
+            return int.TryParse(number, out it);
+        }        
+    }
+}
 
+namespace Factorization
+{
+    public class MultiplicatiMember
+    {
+        public MultiplicatiMember(int a,int b)
+        {
+            this.A = a;
+            this.B = b;
+        }
+
+        public int A { get; set; }
+
+        public int B { get; set; }
+    }
+}
+
+namespace Factorization
+{
+    public class FactorisationResult
+    {
+        public FactorisationResult(int a, int b, int c, int d)
+        {
+            this.A = a;
+            this.B = b;
+            this.C = c;
+            this.D = d;
+        }
+
+        public int A { get; set; }
+
+        public int B { get; set; }
+
+        public int C { get; set; }
+
+        public int D { get; set; }
+
+        public override string ToString()
+        {
+            return this.A + "," + this.B + "," + this.C + "," + this.D;
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Factorization
+{
+    public class Factorisation
+    {
+        /// <summary>
+        /// 数字をa * bの形に分解して返す
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<MultiplicatiMember> GetMultiplicatiMember(int number)
+        {
+            List<MultiplicatiMember> members = new List<MultiplicatiMember>();
+            int numberPlus = Math.Abs(number);
+            // -number < a <= number
+            for (int i = numberPlus * -1; i <= numberPlus; i++)
+            {
+                for (int j = numberPlus * -1; j <= numberPlus; j++)
+                {
+                    if (i * j == number)
+                    {
+                        members.Add(new MultiplicatiMember(i, j));
+                    }
+                }
+            }
+            /*
+            if (number > 0)
+            {
+                return members;
+            }
+
+            var membersNew = new List<MultiplicatiMember>();
+            foreach (var member in members)
+            {
+                AddMemberIfNotExist(membersNew, member.A * -1, member.B);
+                AddMemberIfNotExist(membersNew, member.A, member.B * -1);
+            }
+             */
+            return members;
+        }
+
+        private static void AddMemberIfNotExist(List<MultiplicatiMember> member, int a, int b)
+        {
+            if (!member.Any(mem => mem.A == a && mem.B == b))
+            {
+                member.Add(new MultiplicatiMember(a, b));
+            }
+        }
+
+        /// <summary>
+        /// 因数分解処理
+        /// αx2+βx＋γ > (ax+b)(cx+d)
+        /// </summary>
+        /// <param name="ka">α</param>
+        /// <param name="kb">β</param>
+        /// <param name="ky">γ</param>
+        /// <returns></returns>
+        public static List<FactorisationResult> Calc(int ka, int kb, int ky)
+        {
+            var results = new List<FactorisationResult>();
+            int a, b, c, d;
+            // a * c = kaの全パターンを探す
+            var acMembers = Factorisation.GetMultiplicatiMember(ka);
+            // b * d = kyの全パターンを探す
+            var bdMembers = Factorisation.GetMultiplicatiMember(ky);
+            // ad + bc = kbを満たすパターンを探す
+            foreach (var memac in acMembers)
+            {
+                foreach (var membd in bdMembers)
+                {
+                    if (memac.A * membd.B + memac.B * membd.A == kb)
+                    {
+                        results.Add(new FactorisationResult(memac.A, membd.A, memac.B, membd.B));
+                    }
+                }
+            }
+            return results;
+        }
+    }
+}
+
+テストコード：
+using System.Collections.Generic;
+using System.Linq;
+using Factorization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace FactorizationTest
+{
+    [TestClass]
+    public class FactorisationTest
+    {
+        [TestMethod]
+        public void TestGetMultiplicatiMember_1()
+        {
+            // 1 1*1 -1*-1
+            TestGetMultiplicatiMember(1, new List<MultiplicatiMember>() { new MultiplicatiMember(1, 1),new MultiplicatiMember(-1,-1) });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember_2()
+        {
+            // 2 1*2 2*1 -1*-2,-2*-1
+            TestGetMultiplicatiMember(2,
+                new List<MultiplicatiMember>()
+                {
+                    new MultiplicatiMember(1, 2),
+                    new MultiplicatiMember(2, 1),
+                    new MultiplicatiMember(-1, -2),
+                    new MultiplicatiMember(-2, -1)
+                });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember_4()
+        {
+            // 4 1*4 2*2 4*1
+            TestGetMultiplicatiMember(4,
+                new List<MultiplicatiMember>()
+                {
+                    new MultiplicatiMember(1, 4),
+                    new MultiplicatiMember(2, 2),
+                    new MultiplicatiMember(4, 1),
+                    new MultiplicatiMember(-1, -4),
+                    new MultiplicatiMember(-2, -2),
+                    new MultiplicatiMember(-4, -1)
+                });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember_12()
+        {
+            // 12 1*12 2*6 6*2 3*4 4*3 12*1
+            TestGetMultiplicatiMember(12,
+                new List<MultiplicatiMember>()
+                {
+                    new MultiplicatiMember(1, 12),
+                    new MultiplicatiMember(2, 6),
+                    new MultiplicatiMember(6, 2),
+                    new MultiplicatiMember(3, 4),
+                    new MultiplicatiMember(4, 3),
+                    new MultiplicatiMember(12, 1),
+                     new MultiplicatiMember(-1, -12),
+                    new MultiplicatiMember(-2, -6),
+                    new MultiplicatiMember(-6, -2),
+                    new MultiplicatiMember(-3, -4),
+                    new MultiplicatiMember(-4, -3),
+                    new MultiplicatiMember(-12, -1)
+                });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember_minus1()
+        {
+            // -1 -1*1 1*-1
+            TestGetMultiplicatiMember(-1, new List<MultiplicatiMember>() { new MultiplicatiMember(1, -1),new MultiplicatiMember(-1,1) });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember_minus2()
+        {
+            // -2 -1*2 -2*1 1*-2 2*-1
+            TestGetMultiplicatiMember(-2, new List<MultiplicatiMember>()
+            {
+                new MultiplicatiMember(-1, 2),
+                new MultiplicatiMember(-2, 1),
+                new MultiplicatiMember(1, -2),
+                new MultiplicatiMember(2, -1)
+            });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember_minus4()
+        {
+            // -4 -1*4 -2*2 2*-2 -4*1
+            TestGetMultiplicatiMember(-4,
+                new List<MultiplicatiMember>()
+                {
+                    new MultiplicatiMember(-1, 4),
+                    new MultiplicatiMember(-2, 2),
+                    new MultiplicatiMember(2, -2),
+                    new MultiplicatiMember(-4, 1),
+                    new MultiplicatiMember(4, -1),
+                    new MultiplicatiMember(1, -4),
+                });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember_minus12()
+        {
+            // -12 -1*12 -2*6 -6*2 -3*4 -4*3 -12*1
+            TestGetMultiplicatiMember(-12,
+                new List<MultiplicatiMember>()
+                {
+                    new MultiplicatiMember(-1, 12),
+                    new MultiplicatiMember(1, -12),
+                    new MultiplicatiMember(12, -1),
+                    new MultiplicatiMember(-2, 6),
+                    new MultiplicatiMember(-6, 2),
+                    new MultiplicatiMember(2, -6),
+                    new MultiplicatiMember(6, -2),
+                    new MultiplicatiMember(-3, 4),
+                    new MultiplicatiMember(-4, 3),
+                    new MultiplicatiMember(3, -4),
+                    new MultiplicatiMember(4, -3),
+                    new MultiplicatiMember(-12, 1)
+                });
+        }
+        [TestMethod]
+        public void TestGetMultiplicatiMember(int input,List<MultiplicatiMember> expectResult)
+        {
+            var msg = "input is " + input;
+            var result = Factorisation.GetMultiplicatiMember(input);
+            Assert.AreEqual(expectResult.Count, result.Count(),msg);
+
+            bool isSame = true;
+            foreach (var mem in result)
+            {
+                if (!expectResult.Any(a => a.A == mem.A && a.B == mem.B))
+                {
+                    isSame = false;
+                    break;
+                }
+            }
+            Assert.AreEqual(isSame, true, msg);
+        }
+
+        [TestMethod]
+        public void TestCalc_1()
+        {
+            TestCalc(3,10,3,new FactorisationResult(1,3,3,1));
+        }
+
+        [TestMethod]
+        public void TestCalc_2()
+        {
+            TestCalc(6, -1, -15, new FactorisationResult(2, 3, 3, -5));
+        }
+
+        [TestMethod]
+        public void TestCalc_3()
+        {
+            TestCalc(12, -1, -6, new FactorisationResult(3, 2, 4, -3));
+        }
+
+        [TestMethod]
+        public void TestCalc_4()
+        {
+            TestCalc(3, -8, 4, new FactorisationResult(1, -2, 3, -2));
+        }
+
+        [TestMethod]
+        public void TestCalc_5()
+        {
+            TestCalc(3, 5, 7, null);
+        }
+
+        public void TestCalc(int inputA,int inputB,int inputC,FactorisationResult expectResult)
+        {
+            var msg = string.Format("error input is {0},{1},{2}", inputA, inputB, inputC);
+            var result = Factorisation.Calc(inputA, inputB, inputC);
+            if (expectResult == null)
+            {
+                Assert.AreEqual(result.Count,0,msg);
+                return;
+            }
+            Assert.AreEqual(result.Any(a => a.A == expectResult.A
+                                            && a.B == expectResult.B
+                                            && a.C == expectResult.C
+                                            && a.D == expectResult.D), true, msg);
+        }
+    }
+}
 
 
 【必須】使用言語・動作環境について
-(1)言語の種類を記入してください。未記入の場合、減点となります。
+(1)言語の種類
+C# windows .NET Framework4.0以上
 
-
-
-(2)コンパイラ／インタプリタの名称・バージョン情報を記入してください。未記入の場合、減点となります。
-
-
+(2)コンパイラ／インタプリタの名称・バージョン情報を記入してください。
+VisualStudio 2013
 
 【必須】プログラムの特長・工夫した点等、アピールポイントについて。
-あなたが書いたコードの内容や工夫した点をわかりやすく説明してください。未記入の場合、大幅な減点となります。
+1 オブジェクト指向
+2 単体テストあり、リファクタリングがしやすい
+3 コメント付き、メソッドの分割しっかりされて、わかりやすい
+
 
 
 

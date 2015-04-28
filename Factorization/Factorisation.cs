@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Factorization
 {
     public class Factorisation
     {
         /// <summary>
-        /// 数字をa * bの形に分解して返す
+        /// 数字をa * bの形に分解できる一覧を返します
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<MultiplicatiMember> GetMultiplicatiMember(int number)
@@ -27,19 +25,6 @@ namespace Factorization
                     }
                 }
             }
-            /*
-            if (number > 0)
-            {
-                return members;
-            }
-
-            var membersNew = new List<MultiplicatiMember>();
-            foreach (var member in members)
-            {
-                AddMemberIfNotExist(membersNew, member.A * -1, member.B);
-                AddMemberIfNotExist(membersNew, member.A, member.B * -1);
-            }
-             */
             return members;
         }
 
@@ -62,11 +47,10 @@ namespace Factorization
         public static List<FactorisationResult> Calc(int ka, int kb, int ky)
         {
             var results = new List<FactorisationResult>();
-            int a, b, c, d;
             // a * c = kaの全パターンを探す
-            var acMembers = Factorisation.GetMultiplicatiMember(ka);
+            var acMembers = GetMultiplicatiMember(ka).ToArray();
             // b * d = kyの全パターンを探す
-            var bdMembers = Factorisation.GetMultiplicatiMember(ky);
+            var bdMembers = GetMultiplicatiMember(ky).ToArray();
             // ad + bc = kbを満たすパターンを探す
             foreach (var memac in acMembers)
             {

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Factorization
+﻿namespace Factorization
 {
+    /// <summary>
+    /// 因数分解の結果
+    /// </summary>
     public class FactorisationResult
     {
         public FactorisationResult(int a, int b, int c, int d)

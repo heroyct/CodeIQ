@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Factorization
+﻿namespace Factorization
 {
+    /// <summary>
+    /// 数字をa x bに分解される結果を表すクラス
+    /// </summary>
     public class MultiplicatiMember
     {
         public MultiplicatiMember(int a,int b)
