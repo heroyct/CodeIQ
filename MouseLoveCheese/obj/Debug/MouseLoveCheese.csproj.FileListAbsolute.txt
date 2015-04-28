@@ -1,1 +1,5 @@
 C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheese\bin\Debug\MouseLoveCheese.exe.config
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheese\bin\Debug\MouseLoveCheese.exe
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheese\bin\Debug\MouseLoveCheese.pdb
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheese\obj\Debug\MouseLoveCheese.exe
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheese\obj\Debug\MouseLoveCheese.pdb

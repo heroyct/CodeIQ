@@ -7,6 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseLoveCheeseTest", "Mous
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseLoveCheese", "MouseLoveCheese\MouseLoveCheese.csproj", "{4F3844CD-E1B9-4D59-AA00-5A3C44F9250F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factorization", "Factorization\Factorization.csproj", "{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{86583CBB-6FDC-405D-9328-1D15AFDE16C7}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorizationTest", "FactorizationTest\FactorizationTest.csproj", "{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +48,31 @@ Global
 		{4F3844CD-E1B9-4D59-AA00-5A3C44F9250F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4F3844CD-E1B9-4D59-AA00-5A3C44F9250F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4F3844CD-E1B9-4D59-AA00-5A3C44F9250F}.Release|x86.ActiveCfg = Release|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9988D32F-6C9C-482E-9CE6-6AC06B6CE16D}.Release|x86.ActiveCfg = Release|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C8F950F2-3C4C-41F5-B1B2-DBD742F06F95} = {86583CBB-6FDC-405D-9328-1D15AFDE16C7}
 	EndGlobalSection
 EndGlobal

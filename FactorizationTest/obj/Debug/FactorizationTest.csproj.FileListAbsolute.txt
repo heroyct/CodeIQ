@@ -1,0 +1,7 @@
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\FactorizationTest\bin\Debug\FactorizationTest.dll
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\FactorizationTest\bin\Debug\FactorizationTest.pdb
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\FactorizationTest\bin\Debug\Factorization.exe
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\FactorizationTest\bin\Debug\Factorization.pdb
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\FactorizationTest\obj\Debug\FactorizationTest.csprojResolveAssemblyReference.cache
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\FactorizationTest\obj\Debug\FactorizationTest.dll
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\FactorizationTest\obj\Debug\FactorizationTest.pdb

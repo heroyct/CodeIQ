@@ -1,0 +1,7 @@
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheeseTest\bin\Debug\MouseLoveCheeseTest.dll
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheeseTest\bin\Debug\MouseLoveCheeseTest.pdb
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheeseTest\bin\Debug\MouseLoveCheese.exe
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheeseTest\bin\Debug\MouseLoveCheese.pdb
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheeseTest\obj\Debug\MouseLoveCheeseTest.csprojResolveAssemblyReference.cache
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheeseTest\obj\Debug\MouseLoveCheeseTest.dll
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\MouseLoveCheeseTest\obj\Debug\MouseLoveCheeseTest.pdb

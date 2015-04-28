@@ -1,0 +1,5 @@
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\Factorization\bin\Debug\Factorization.exe.config
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\Factorization\bin\Debug\Factorization.exe
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\Factorization\bin\Debug\Factorization.pdb
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\Factorization\obj\Debug\Factorization.exe
+C:\Users\春涛\Documents\Visual Studio 2013\Projects\CodeIQ\Factorization\obj\Debug\Factorization.pdb
